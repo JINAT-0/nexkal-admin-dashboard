@@ -23,20 +23,14 @@ export default function SignInView() {
         {/* Subtle decorative curved circular layers to match design aesthetics */}
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute -top-16 -right-20 w-[420px] h-[420px] rounded-full bg-white/[0.09] blur-[0.5px]"
+          className="pointer-events-none absolute -top-16 -right-20 w-[420px] h-[420px] rounded-full bg-white/[0.12] blur-[0.5px]"
         />
+       
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute top-1/4 -right-12 w-[340px] h-[340px] rounded-full bg-white/[0.05]"
+          className="pointer-events-none absolute -bottom-28 -left-20 w-[540px] h-[540px] rounded-full bg-white/[0.12]"
         />
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute -bottom-28 -left-20 w-[540px] h-[540px] rounded-full bg-white/[0.08]"
-        />
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute -bottom-36 right-0 w-[420px] h-[420px] rounded-full bg-white/[0.06]"
-        />
+       
 
         {/* Top: Logo */}
         <div className="relative z-10 flex items-center gap-3">
@@ -93,6 +87,11 @@ export default function SignInView() {
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
+                onFocus={() => {
+                 if (email === "camille@nexkal.app") {
+                   setEmail("");
+                   }
+}}
                 placeholder="camille@nexkal.app"
                 required
                 className="w-full px-4 py-3 rounded-xl border border-zinc-200 bg-white text-zinc-900 text-[14px] placeholder-zinc-400 shadow-sm focus:outline-none focus:border-[#FFA39E] focus:ring-4 focus:ring-[#EE5249]/15 transition-all"
@@ -108,14 +107,16 @@ export default function SignInView() {
                 Password
               </label>
               <div className="relative">
-                <input
-                  id="password"
-                  type="password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  required
-                  className="w-full pl-4 pr-20 py-3 rounded-xl border border-[#FFA39E] bg-white text-zinc-900 text-[14px] tracking-[0.25em] shadow-[0_0_0_3.5px_rgba(238,82,73,0.14)] focus:outline-none focus:border-[#EB4B44] focus:ring-4 focus:ring-[#EE5249]/20 transition-all"
-                />
+            <input
+              id="password"
+  type="password"
+  value={password}
+  onChange={(e) => setPassword(e.target.value)}
+  onFocus={() => setPassword("")}
+  placeholder="••••••••"
+  required
+  className="w-full px-4 py-3 rounded-xl border border-zinc-200 bg-white text-zinc-900 text-[14px] placeholder-zinc-400 shadow-sm focus:outline-none focus:border-[#FFA39E] focus:ring-4 focus:ring-[#EE5249]/15 transition-all"
+/>
                 <button
                   type="button"
                   onClick={() => setShowForgotNotice(true)}
